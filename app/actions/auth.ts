@@ -11,3 +11,8 @@ export async function signup(formData: FormData){
     const session = await encrypt({username})
     ;(await cookies()).set("session",session,{expires,httpOnly: true})
 }
+
+// logout
+export async function logout(){
+    (await cookies()).set("session","",{expires: new Date(0)})
+}
